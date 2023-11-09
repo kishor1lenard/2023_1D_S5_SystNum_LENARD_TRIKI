@@ -1,15 +1,15 @@
 # 2023_1D_S5_SystNum_LENARD_TRIKI
 
-LENARD DUNSTAN Kishor
-TRIKI Ahcène
-1DA
+***LENARD DUNSTAN Kishor***
+***TRIKI Ahcène***
+***1DA***
 
 
-Systèmes Numériques
+**Systèmes Numériques**
 
-TP1
+**TP1**
 
-4.1. Découverte du composant : MCP23S17
+**4.1. Découverte du composant : MCP23S17**
 
 - Quel est son rôle ?
 Le MCP23S17 est un port d'extension d'E/S de 16 bits à usage général qui utilise une interface SPI.
@@ -33,7 +33,6 @@ Les pins qui sont reliés au micro-controleur sont :
   
 
 - Etablir un tableau d'association entre les pins du composant et celle du micro-controleur.
-  
 PA4 : CS (Pin 11)
 PA5 : SCK (Pin 12)
 PA6 : MISO (Pin 14)
@@ -58,12 +57,55 @@ Ces résistances permettent de limiter le courant à travers les LEDs.
 Les valeurs différentes sont dues à des besoins de courant différents pour chaque LED.
 
 
-Le GPIO Expander (MCP23S17) possède une mémoire (RAM) de 16 octets (voir table 3-1). Nous avons besoin de configurer uniqument les registres IODIRA, IODIRB, GPIOA et GPIOB.
+**Le GPIO Expander (MCP23S17) possède une mémoire (RAM) de 16 octets (voir table 3-1). Nous avons besoin de configurer uniqument les registres IODIRA, IODIRB, GPIOA et GPIOB.**
 -  A quoi correspondent ces registres ?
+Les registres IODIRA et IODIRB sont utilisés pour configurer les broches comme des entrées ou des sorties.
+Les registres GPIOA et GPIOB sont utilisés pour lire ou écrire des données sur les broches.
 
--  
+-  Quels valeurs doivent ils prendre pour que toutes les leds soient éteintes ?
+On sait que les registres I0DIRA et I0DIRB sont utilisés pour configurer les pins en entrées ou en sorties donc, pour que les LEDs s'allument, on doit configurer ces registres comme des sorties, c'est-à-dire les mettre en 0. Et on doit configurer les registres GPIOA et GPIOB avec la valeur binaire 00000000 pour éteindre toutes les LEDs.
+
+
+-  Quels valeurs doivent ils prendre pour que toutes les leds soient allumées ?
+Dans ce cas, il faut configurer les registres IODIRA et IODIRB pour définir toutes les broches comme des sorties, c'est-à-dire les mettres en 0, et configurer les registres GPIOA et GPIOB avec la valeur binaire 11111111 pour allumer toutes les LEDs.
+
+
+-  Pour que seule la led D508 soit allumée ?
+Pour allumer la D508, il faut dans un premier temps configurer les registres IODIRA et IODIRB comme des sorties, 0. Et les registres GPIOA et GPIOB avec la valeur binaire 00000001 pour allumer seulement D508.
+
+
+**Afin de bien maitriser quelles données vous devez envoyer au signal, lire la section 3.2.3.1.**
+
+
+![image](https://github.com/kishor1lenard/2023_1D_S5_SystNum_LENARD_TRIKI/assets/150352720/57648590-9e93-48b4-aa63-9473075c29b3)
+![image](https://github.com/kishor1lenard/2023_1D_S5_SystNum_LENARD_TRIKI/assets/150352720/0db0dd7d-6313-4ff4-ba58-06840ebb89ba)
+
+- Etablir la séquence de valeur à envoyer pour :
+        - Configurer l'ensemble des pins correctements :
+
+**Read : 1**
+**Write : 0**
+
+***D'abord Adresse (0100 0001)***
+***Ensuite Device Slave (IODIRA, IODIRB)***
+***A la fin, (GPIOA, GPIOB)***
+
+A2, A1, et A0 sont reliés à la masse donc vallent 0. Donc l'adresse du device est 01000001
+
+On configure :
+01000001 00000000 00010010
+01000001 00000001 00010011
+
+
+        - Eteindre toute les leds puis allumer toutes les leds.
+01000001 00010010 0000 0000
+
+01000001 00010010 1111 1111
+        
+        - Indice : vous devez envoyer au total 18 octets au composant
 
 
 
 
 
+  
