@@ -21,17 +21,20 @@ Le MCP23S17 peut gérer jusqu'à 16 entrées/sorties GPIO.
 Les GPIO peuvent être configurés comme des entrées ou des sorties en fonction de nos besoins. 
 
 - A quelle fréquence maximale peut-on communiquer avec ce composant ?
+  Avec une fréquence maximale de 10 MHz, on peut communiquer avec un composant en SPI.
 
+- Listes les pins qui sont reliés au micro-controleur et expliciter leur rôle.
 
-- Listes les pin qui sont reliés au micro-controleur et expliciter leur rôle.
-
+![image](https://github.com/kishor1lenard/2023_1D_S5_SystNum_LENARD_TRIKI/assets/150352720/b8df26a8-23b6-4226-885a-921765bc51f4)
 
 - Etablir un tableau d'association entre les pins du composant et celle du micro-controleur.
 
 
 - A quoi servent les pins A0, A1 et A2 ? Qu'est ce que l'opcode ?
 
+
 - A quoi servent les pins INTA et INTB ?
+
 
 - Quelle doit-être la valeur de sortie d'une pin pour allumer la led ?
 
