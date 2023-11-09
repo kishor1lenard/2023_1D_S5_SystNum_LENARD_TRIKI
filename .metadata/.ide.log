@@ -788,3 +788,7 @@
 2023-11-09 14:30:06,401 [INFO] ApiDb:451 - User favorites MCUs=[]
 2023-11-09 14:30:06,402 [INFO] ApiDb:447 - Save user favorites file /users/ahcetrik65/.stm32cubeide/favorites.boards.txt: 0 item(s)
 2023-11-09 14:30:06,402 [INFO] ApiDb:451 - User favorites Boards=[]
+2023-11-09 17:30:59,863 [INFO] JxBrowserEngine:114 - Initiate JxBrowser Engine with user profile folder
+2023-11-09 17:31:00,650 [INFO] WebAppUi:459 - Close the Jxbrowser engine manually
+2023-11-09 17:31:00,656 [INFO] WebAppUi:462 - Profiles folder deleted
+2023-11-09 17:31:00,946 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
