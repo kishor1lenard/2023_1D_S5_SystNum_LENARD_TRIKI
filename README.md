@@ -12,7 +12,7 @@ TP1
 4.1. Découverte du composant : MCP23S17
 
 - Quel est son rôle ?
-Le MCP23S17 est un port d'extension d'E/S 16 bits à usage général.
+Le MCP23S17 est un port d'extension d'E/S de 16 bits à usage général qui utilise une interface SPI.
 
 - Combien d'entrées/sorties (GPIO) peut-il gérer simultanéments ?
 Le MCP23S17 peut gérer jusqu'à 16 entrées/sorties GPIO.
@@ -24,32 +24,45 @@ Les GPIO peuvent être configurés comme des entrées ou des sorties en fonction
   Avec une fréquence maximale de 10 MHz, on peut communiquer avec un composant en SPI.
 
 - Listes les pins qui sont reliés au micro-controleur et expliciter leur rôle.
-
-![image](https://github.com/kishor1lenard/2023_1D_S5_SystNum_LENARD_TRIKI/assets/150352720/b8df26a8-23b6-4226-885a-921765bc51f4)
+Les pins qui sont reliés au micro-controleur sont :
+       - les pins nécessaires à la communication en SPI :
+                - CS (Chip Select): Sélection du composant esclave pour la communication SPI.
+                - SCK (Serial Clock): Horloge
+                - MISO (Master In Slave Out): Données entrantes du MCP23S17 vers le microcontrôleur.
+                - MOSI (Master Out Slave In): Données sortantes du microcontrôleur vers le MCP23S17.
+  
 
 - Etablir un tableau d'association entre les pins du composant et celle du micro-controleur.
-
+  
+PA4 : CS (Pin 11)
+PA5 : SCK (Pin 12)
+PA6 : MISO (Pin 14)
+PA7 : MOSI (Pin 13)
+RESET (Pin 18)
 
 - A quoi servent les pins A0, A1 et A2 ? Qu'est ce que l'opcode ?
+  Ces broches sont reliés au GND et permettent de configurer l'adresse du MCP23S17. En configurant ces broches à la masse ou à VDD, vous pouvez sélectionner une adresse unique parmi huit adresses possibles, permettant la connexion de plusieurs MCP23S17 sur le même bus SPI.
+L'opcode est le code binaire ou mnémonique qui correspond à une instruction machine spécifique, permettant au processeur de comprendre et d'exécuter des opérations spécifiques. L'opcode est utilisé pour sélectionner le type d'opération (lecture/écriture) et l'espace de mémoire.
 
 
 - A quoi servent les pins INTA et INTB ?
+Les pins INTA (Broche 18) et INTB (Broche 19) sont utilisées pour les interruptions. Elles signalent au microcontrôleur qu'un changement d'état sur les ports d'entrée/sortie a eu lieu. Donc le programme s'arrête et effectue un autre tâche et reviens dès qu'elle a finit la tâche à l'endroit où s'est arrêté le programme.
 
 
 - Quelle doit-être la valeur de sortie d'une pin pour allumer la led ?
+La valeur de sortie du pin qui permet d'allumer la led doit être à 0V.
 
 
 - A quoi servent les résistances R501 à R516 ? Pourquoi ne sont-elles pas toutes de la même valeur ?
+Ces résistances permettent de limiter le courant à travers les LEDs.
+Les valeurs différentes sont dues à des besoins de courant différents pour chaque LED.
 
 
+Le GPIO Expander (MCP23S17) possède une mémoire (RAM) de 16 octets (voir table 3-1). Nous avons besoin de configurer uniqument les registres IODIRA, IODIRB, GPIOA et GPIOB.
+-  A quoi correspondent ces registres ?
 
-       
-       
-    1. 
-    2. Pins A0, A1, A2 et opcode: Ces pins permettent de configurer l'adresse I2C du MCP23S17, définissant ainsi son adresse sur le bus. L'opcode est utilisé pour sélectionner le type d'opération (lecture/écriture) et l'espace de mémoire.
-    3. Pins INTA et INTB: Ces pins sont des broches d'interruption qui peuvent être configurées pour signaler des changements d'état sur les GPIO.
-    4. Valeur de sortie pour allumer la LED: Cela dépend de la configuration spécifique de votre circuit. Généralement, une sortie à niveau bas (0V) peut allumer une LED.
-    5. Résistances R501 à R516: Ces résistances sont probablement présentes pour limiter le courant à travers les LEDs ou pour définir les niveaux logiques. Les valeurs différentes peuvent être dues à des besoins de courant différents pour chaque LED ou GPIO.
+-  
+
 
 
 
