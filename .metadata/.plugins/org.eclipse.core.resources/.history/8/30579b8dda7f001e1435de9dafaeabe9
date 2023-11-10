@@ -1,0 +1,15 @@
+#include "mes_fichiers/vu_meter.h"
+
+h_vu_t h_vu;
+
+int vu_init(h_vu_t *h_vu){
+
+
+	return 0;
+}
+
+int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state){
+
+
+	return 0;
+};

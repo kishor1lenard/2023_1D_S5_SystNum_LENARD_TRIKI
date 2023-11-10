@@ -1,0 +1,5 @@
+#include "mes_fichiers/vu_meter.h"
+
+h_vu_t h_vu;
+
+

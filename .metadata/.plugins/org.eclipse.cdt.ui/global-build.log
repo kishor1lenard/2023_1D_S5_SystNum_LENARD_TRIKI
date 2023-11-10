@@ -1,0 +1,68 @@
+16:08:39 **** Incremental Build of configuration Debug for project tp1_lenard_triki ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/mes_fichiers/vu_meter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mes_fichiers/vu_meter.d" -MT"Core/Src/mes_fichiers/vu_meter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mes_fichiers/vu_meter.o"
+In file included from ../Core/Src/mes_fichiers/vu_meter.c:1:
+../Core/Inc/mes_fichiers/vu_meter.h:19:13: error: unknown type name 'h_vu_t'
+   19 | int vu_init(h_vu_t *h_vu);
+      |             ^~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:20:12: error: unknown type name 'h_vu_t'
+   20 | int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state);
+      |            ^~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:20:26: error: unknown type name 'uint8_t'
+   20 | int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state);
+      |                          ^~~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:20:40: error: unknown type name 'uint8_t'
+   20 | int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state);
+      |                                        ^~~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:20:53: error: unknown type name 'uint8_t'
+   20 | int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state);
+      |                                                     ^~~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:24:4: error: unknown type name 'uint8_t'
+   24 |    uint8_t led[2];
+      |    ^~~~~~~
+../Core/Inc/mes_fichiers/vu_meter.h:25:4: error: unknown type name 'uint8_t'
+   25 |    uint8_t spi_buffer[3];
+      |    ^~~~~~~
+../Core/Src/mes_fichiers/vu_meter.c: In function 'vu_init':
+../Core/Src/mes_fichiers/vu_meter.c:13:34: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   13 |     HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+      |                              ~~~~^~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:430,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/spi.h:29,
+                 from ../Core/Src/mes_fichiers/vu_meter.c:2:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/mes_fichiers/vu_meter.c:17:34: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   17 |     HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+      |                              ~~~~^~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:430,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/spi.h:29,
+                 from ../Core/Src/mes_fichiers/vu_meter.c:2:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/mes_fichiers/vu_meter.c: In function 'vu_led':
+../Core/Src/mes_fichiers/vu_meter.c:38:34: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   38 |     HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+      |                              ~~~~^~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:430,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/spi.h:29,
+                 from ../Core/Src/mes_fichiers/vu_meter.c:2:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/mes_fichiers/subdir.mk:19: Core/Src/mes_fichiers/vu_meter.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.

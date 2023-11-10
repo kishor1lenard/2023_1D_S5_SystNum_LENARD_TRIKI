@@ -1,0 +1,70 @@
+#include "mes_fichiersvu_meter.h"
+#include "spi.h" // Assurez-vous d'inclure le bon fichier d'en-tête pour les fonctions SPI HAL
+
+// Fonction d'initialisation
+int vu_init(h_vu_t *h_vu) {
+    // Initialisation de la structure h_vu_t
+    h_vu->led[0] = 0;
+    h_vu->led[1] = 0;
+
+    // Configuration du MCP23S17
+    h_vu->spi_buffer[0] = VU_IODIRA_ADDRESS;
+    h_vu->spi_buffer[1] = 0x00; // Tous les pins en sortie pour le port A
+    HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+
+    h_vu->spi_buffer[0] = VU_IODIRB_ADDRESS;
+    h_vu->spi_buffer[1] = 0x00; // Tous les pins en sortie pour le port B
+    HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+
+    return 0; // Retourne 0 si tout s'est bien passé
+}
+
+// Fonction pour contrôler une LED
+int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state) {
+    // Mise à jour des valeurs de h_vu
+    if (state) {
+        h_vu->led[port] |= (1 << led); // Allumer la LED
+    } else {
+        h_vu->led[port] &= ~(1 << led); // Éteindre la LED
+    }
+
+    // Envoi des données au GPIO Expander via le bus SPI
+    if (port == VU_PORTA) {
+        h_vu->spi_buffer[0] = VU_GPIOA_ADDRESS;
+    } else if (port == VU_PORTB) {
+        h_vu->spi_buffer[0] = VU_GPIOB_ADDRESS;
+    }
+    h_vu->spi_buffer[1] = h_vu->led[port];
+    HAL_SPI_Transmit(&hspi3, h_vu->spi_buffer, 2, HAL_MAX_DELAY);
+
+    return 0; // Retourne 0 si tout s'est bien passé
+}
+
+
+
+
+/*
+#include "mes_fichiers/vu_meter.h"
+
+h_vu_t h_vu;
+
+int vu_init(h_vu_t *h_vu){
+
+	HAL_GPIO_WritePin(GPIO_TypeDef* GPIOA, uint16_t GPIO_Pin, GPIO_PinState PinState)
+
+
+	return 0;
+}
+
+
+
+int vu_led(h_vu_t *h_vu, uint8_t port, uint8_t led, uint8_t state){
+
+	HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)
+
+	HAL_Delay(uint32_t Delay)
+
+
+	return 0;
+};
+ */
