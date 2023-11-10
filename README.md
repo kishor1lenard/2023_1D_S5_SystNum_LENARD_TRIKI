@@ -93,16 +93,30 @@ Pour allumer la D508, il faut dans un premier temps configurer les registres IOD
 A2, A1, et A0 sont reliés à la masse donc vallent 0. Donc l'adresse du device est 01000001
 
 On configure :
-01000001 00000000 00010010
-01000001 00000001 00010011
-
+IODIRA: 01000000 00000000 00000000
+IODIRB: 01000000 00000001 00000000
 
         - Eteindre toute les leds puis allumer toutes les leds.
-01000001 00010010 0000 0000
+GPIOA : 01000000 00010010 00000000
+GPIOB : 01000000 00010011 00000000
 
-01000001 00010010 1111 1111
-        
-        - Indice : vous devez envoyer au total 18 octets au composant
+GPIOA : 01000000 00010010 11111111
+GPIOB : 01000000 00010011 11111111
+
+     
+
+**4.2 Paramétrage du microcontrôleur**
+
+![image](https://github.com/kishor1lenard/2023_1D_S5_SystNum_LENARD_TRIKI/assets/150352720/0707deee-91e1-43d0-8d67-af4f62685c14)
+
+
+
+**4.3. Organiser son code**
+
+
+
+
+
 
 
 
