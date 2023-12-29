@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -61,8 +61,8 @@ all: main-build
 main-build: tp1_lenard_triki.elf secondary-outputs
 
 # Tool invocations
-tp1_lenard_triki.elf tp1_lenard_triki.map: $(OBJS) $(USER_OBJS) /users/ahcetrik65/Desktop/2023_1D_S5_SystNum_LENARD_TRIKI/tp1_lenard_triki/STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "tp1_lenard_triki.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/users/ahcetrik65/Desktop/2023_1D_S5_SystNum_LENARD_TRIKI/tp1_lenard_triki/STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp1_lenard_triki.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+tp1_lenard_triki.elf tp1_lenard_triki.map: $(OBJS) $(USER_OBJS) D:\ensea\projects\2023_1D_S5_SystNum_LENARD_TRIKI\tp1_lenard_triki\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "tp1_lenard_triki.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ensea\projects\2023_1D_S5_SystNum_LENARD_TRIKI\tp1_lenard_triki\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp1_lenard_triki.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
